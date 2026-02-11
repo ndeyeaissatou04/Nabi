@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URBANOVA | Aménagement du Territoire Durable</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Styles pour les onglets interactifs */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .tab-btn.active { border-bottom: 4px solid #059669; color: #059669; background: #ecfdf5; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-emerald-700 tracking-tighter">URBAN<span class="text-gray-800">OVA</span></span>
+                </div>
+                <div class="hidden md:block space-x-8">
+                    <a href="#accueil" class="hover:text-emerald-600 transition">Accueil</a>
+                    <a href="#propos" class="hover:text-emerald-600 transition">À Propos</a>
+                    <a href="#expertise" class="hover:text-emerald-600 transition">Expertise</a>
+                    <a href="#equipe" class="hover:text-emerald-600 transition">Équipe</a>
+                    <a href="#contact" class="bg-emerald-600 text-white px-5 py-2 rounded-full hover:bg-emerald-700 transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="accueil" class="relative h-screen flex items-center justify-center text-center text-white hero-gradient">
+        <div class="px-4">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Études & Projets d'Urbanisme</h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-gray-200">
+                Aménagement du territoire durable pour des villes inclusives et dynamiques.
+            </p>
+            <a href="#expertise" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-md text-lg font-medium transition inline-block">Voir nos expertises</a>
+        </div>
+    </header>
+
+    <!-- Qui Sommes-Nous -->
+    <section id="propos" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Qui sommes-nous ?</h2>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    URBANOVA est un cabinet d’études spécialisé dans l’aménagement du territoire et la planification urbaine durable. Nous accompagnons les collectivités et les acteurs privés dans la conception de solutions adaptées aux réalités territoriales.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 bg-emerald-50 rounded-lg border-l-4 border-emerald-500">
+                        <h4 class="font-bold text-emerald-800">Multidisciplinaire</h4>
+                        <p class="text-sm text-gray-500">Social, Économie, Environnement</p>
+                    </div>
+                    <div class="p-4 bg-emerald-50 rounded-lg border-l-4 border-emerald-500">
+                        <h4 class="font-bold text-emerald-800">Durable</h4>
+                        <p class="text-sm text-gray-500">Projets à faible impact</p>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Réunion d'équipe urbanisme">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION EXPERTISE INTERACTIVE (TABS) -->
+    <section id="expertise" class="py-24 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 uppercase">Domaines d'intervention</h2>
+                <p class="text-emerald-600 font-semibold mt-2">Cliquez sur une expertise pour découvrir le détail</p>
+            </div>
+
+            <!-- Boutons de Navigation (Tabs) -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button onclick="openTab(event, 'aménagement')" class="tab-btn active px-6 py-4 font-bold uppercase text-sm rounded-t-lg transition flex items-center gap-2">
+                    <i class="fa-solid fa-map"></i> Aménagement
+                </button>
+                <button onclick="openTab(event, 'opérationnel')" class="tab-btn px-6 py-4 font-bold uppercase text-sm rounded-t-lg transition flex items-center gap-2">
+                    <i class="fa-solid fa-city"></i> Urbanisme Opérationnel
+                </button>
+                <button onclick="openTab(event, 'foncier')" class="tab-btn px-6 py-4 font-bold uppercase text-sm rounded-t-lg transition flex items-center gap-2">
+                    <i class="fa-solid fa-file-contract"></i> Analyse Foncière
+                </button>
+                <button onclick="openTab(event, 'socio')" class="tab-btn px-6 py-4 font-bold uppercase text-sm rounded-t-lg transition flex items-center gap-2">
+                    <i class="fa-solid fa-leaf"></i> Socio-Environnement
+                </button>
+            </div>
+
+            <!-- Contenus des Onglets -->
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl min-h-[400px]">
+                
+                <!-- 1. Aménagement -->
+                <div id="aménagement" class="tab-content active">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-emerald-50 p-6 rounded-2xl border-l-4 border-emerald-500">
+                            <h3 class="text-xl font-bold text-emerald-800 mb-3 uppercase">Diagnostic Territorial</h3>
+                            <p class="text-gray-700 leading-relaxed">Évaluation des caractéristiques et des besoins d'une zone, identification des enjeux clés et solutions adaptées pour le développement urbain.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 uppercase">Planification Stratégique</h3>
+                            <p class="text-gray-700 leading-relaxed">Définition des orientations à long terme, garantissant une utilisation efficace des ressources et une intégration harmonieuse des projets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Opérationnel -->
+                <div id="opérationnel" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-emerald-50 p-6 rounded-2xl border-l-4 border-emerald-500">
+                            <h3 class="text-xl font-bold text-emerald-800 mb-3 uppercase">Restructuration Urbaine</h3>
+                            <p class="text-gray-700">Transformation des espaces dégradés en environnements fonctionnels et modernes.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 uppercase">Requalification Urbaine</h3>
+                            <p class="text-gray-700">Adaptation des infrastructures aux nouveaux besoins pour améliorer la qualité de vie des résidents.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Foncier -->
+                <div id="foncier" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-emerald-50 p-6 rounded-2xl border-l-4 border-emerald-500">
+                            <h3 class="text-xl font-bold text-emerald-800 mb-3 uppercase">Identification Foncière</h3>
+                            <p class="text-gray-700">Comprendre la disponibilité des terrains pour optimiser l'utilisation des ressources spatiales.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 uppercase">Statuts Juridiques</h3>
+                            <p class="text-gray-700">Étude des droits de propriété et réglementations pour garantir la légalité des projets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Socio -->
+                <div id="socio" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-emerald-50 p-6 rounded-2xl border-l-4 border-emerald-500">
+                            <h3 class="text-xl font-bold text-emerald-800 mb-3 uppercase">Enquêtes Participatives</h3>
+                            <p class="text-gray-700">Comprendre les besoins et aspirations des communautés locales pour une approche inclusive.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 uppercase">Analyse des Impacts</h3>
+                            <p class="text-gray-700">Évaluation des effets environnementaux et sociaux pour un aménagement durable.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Équipe -->
+    <section id="equipe" class="py-20 max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-800">Notre Équipe</h2>
+            <div class="w-24 h-1 bg-emerald-600 mx-auto mt-4"></div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-12">
+            <!-- Membre 1 -->
+            <div class="text-center">
+                <div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
+                    <img src="img/Membre1.jpeg" alt="Fatoumata SANE">
+                </div>
+                <h4 class="text-xl font-bold">Fatoumata SANE</h4>
+                <p class="text-emerald-600 text-sm font-semibold mb-2">Responsable du cabinet / Urbaniste planificateur & spécialiste en analyse foncière</p>
+                <p class="text-gray-500 text-sm px-4">Supervision générale des études et analyse foncière.</p>
+            </div>
+            <!-- Membre 2 -->
+            <div class="text-center">
+                <div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
+                    <img src="img/Membre2.jpeg" alt="Ndiaga Mbaye">
+                </div>
+                <h4 class="text-xl font-bold">NDIAGA MBAYE</h4>
+                <p class="text-emerald-600 text-sm font-semibold mb-2">Expert Environnement</p>
+                <p class="text-gray-500 text-sm px-4">Intégration des enjeux climatiques dans les projets urbains.</p>
+            </div>
+            <!-- Membre 3 -->
+            <div class="text-center">
+                <div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
+                    <img src="img/Membre3.jpeg" alt="Oumou Ba">
+                </div>
+                <h4 class="text-xl font-bold">OUMOU BA</h4>
+                <p class="text-emerald-600 text-sm font-semibold mb-2">Analyste Socio-territoriale</p>
+                <p class="text-gray-500 text-sm px-4">Analyse des dynamiques sociales et interactions territoriales.</p>
+            </div>
+            <!-- Membre 4 -->
+            <div class="text-center">
+                <div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
+                    <img src="img/Membre4.jpeg" alt="Mouhamed LO">
+                </div>
+                <h4 class="text-xl font-bold">Mouhamed LO</h4>
+                <p class="text-emerald-600 text-sm font-semibold mb-2">Spécialiste en SIG et analyse spatiale</p>
+                <p class="text-gray-500 text-sm px-4">Production des supports cartographiques et analyses spatiales.</p>
+            </div>
+            <!-- Membre 5 -->
+            <div class="text-center">
+                <div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
+                    <img src="img/Membre6.jpeg" alt="Moussa DIALLO">
+                </div>
+                <h4 class="text-xl font-bold">Moussa DIALLO</h4>
+                <p class="text-emerald-600 text-sm font-semibold mb-2">Spécialiste en urbanisme opérationnel</p>
+                <p class="text-gray-500 text-sm px-4">Élaboration des propositions d’aménagement et scénarios urbains.</p>
+            </div>
+            <!-- Membre 6 -->
+            <div class="text-center">
+                <div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
+                    <img src="https://i.pravatar.cc/150?u=fall" alt="Fatima FALL">
+                </div>
+                <h4 class="text-xl font-bold">Fatima FALL</h4>
+                <p class="text-emerald-600 text-sm font-semibold mb-2">Paysagiste et Designer urbain </p>
+                <p class="text-gray-500 text-sm px-4">Conception paysagère et design des espaces publics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignage Client -->
+    <section class="py-20 bg-emerald-600 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <i class="fa-solid fa-quote-left text-4xl mb-8 opacity-50"></i>
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 italic leading-relaxed">
+                "Grâce à URBANOVA, nous avons réussi à transformer notre vision d'une ville durable en réalité. Leur expertise en planification urbaine a été essentielle pour atteindre nos objectifs."
+            </h2>
+            <div class="inline-block border-t border-white/30 pt-6">
+                <p class="font-bold text-xl uppercase tracking-widest">SALIOU MBAYE</p>
+                <p class="text-emerald-100 text-sm uppercase">Directeur de projet</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contact" class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">Contactez URBANOVA</h2>
+                <div class="space-y-4">
+                    <p class="flex items-center gap-3"><i class="fa-solid fa-envelope text-emerald-500"></i> hello@urbanovasite.com</p>
+                    <p class="flex items-center gap-3"><i class="fa-solid fa-phone text-emerald-500"></i> +221 33 664 91 01</p>
+                    <p class="flex items-center gap-3"><i class="fa-brands fa-instagram text-emerald-500"></i> @urbanovasite</p>
+                </div>
+            </div>
+            <form class="space-y-4 bg-white/5 p-8 rounded-xl border border-white/10">
+                <input type="text" placeholder="Nom complet" class="w-full bg-white/10 border border-white/20 p-3 rounded-md focus:outline-none focus:border-emerald-500 transition">
+                <input type="email" placeholder="Email" class="w-full bg-white/10 border border-white/20 p-3 rounded-md focus:outline-none focus:border-emerald-500 transition">
+                <textarea placeholder="Votre message" rows="4" class="w-full bg-white/10 border border-white/20 p-3 rounded-md focus:outline-none focus:border-emerald-500 transition"></textarea>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 py-3 rounded-md font-bold transition">Envoyer le message</button>
+            </form>
+        </div>
+        <div class="text-center mt-16 pt-8 border-t border-white/10 text-gray-500 text-sm">
+            &copy; 2026 URBANOVA. Tous droits réservés.
+        </div>
+    </footer>
+
+    <!-- SCRIPT POUR LES ONGLETS (EXPERTISE) -->
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabBtn;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            tabBtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtn.length; i++) {
+                tabBtn[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
